@@ -1,0 +1,178 @@
+body {
+background:#fff;
+font-family:Arial, sans-serif;
+}
+
+#mainMenu1, #mainMenu2, #mainMenu3 { 
+display:block; list-style-type: none; padding-left:0px; 
+} 
+
+#mainMenu1 li, #mainMenu2 li, #mainMenu3 li { 
+float:left; 
+margin-right:10px; 
+}     
+ 
+#mainMenu1 li a, #mainMenu2 li a, #mainMenu3 li a { 
+text-decoration:none;
+color:#666;
+}   
+ 
+/**************************************************
+AIORM - ALL IN ONE RESPONSIVE MENU
+***************************************************/ 
+
+.nbs-aiorm-wrap {
+position:relative;
+} 
+ 
+.nbs-aiorm-menu-notch, .nbs-aiorm-wrap, .nbs-aiorm-list-menu, .nbs-aiorm-select-menu, .nbs-aiorm-panel { 
+display:none; 
+} 
+
+.nbs-aiorm-list-menu, .nbs-aiorm-panel-menu {
+list-style-type:none; 
+list-style-position:outside; 
+padding-left:0px;
+}
+
+/**************************************************
+AIORM NOTCH
+***************************************************/
+
+.nbs-aiorm-menu-notch {
+	width:30px;
+	height:30px;
+	background:url(../images/aiorm-notch-icon.png) center center #000;
+	border: 1px solid #333;
+}
+
+/**************************************************
+AIORM SELECT MENU
+***************************************************/
+
+.nbs-aiorm-select-menu {
+	width:100%;
+	padding:3px;
+	color:#fff;
+	background:#333;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+/**************************************************
+AIORM LIST MENU
+***************************************************/
+
+.nbs-aiorm-list-menu {
+	display:none;
+	background-color:rgba(0,0,0,.9);
+	width:100%;
+}
+
+.nbs-aiorm-list-menu:before {
+	border:solid;
+	border-color:rgba(0,0,0,.9) transparent;
+	border-width:0px 6px 6px 6px;
+	content:"";
+	display:block;
+	position:absolute;
+	left:9px;
+	top:-6px;
+}
+
+.nbs-aiorm-list-menu li {
+	position:relative;
+	padding: 10px;
+	border-bottom:1px solid #444;	
+}
+
+.nbs-aiorm-list-menu li a {
+	color: #fff;
+	display:block;	
+	text-decoration:none;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+/**************************************************
+AIORM PANEL MENU
+***************************************************/
+
+.nbs-aiorm-panel {
+	height: 100%;
+	left: 0;
+	top: 0;	
+	overflow: auto;
+	position: fixed;
+	width: 70%;
+	z-index: 2;
+	background-color:rgba(0,0,0,.9);	
+	color: #fff;
+}
+
+.nbs-aiorm-panel-menu {
+	padding:10px;
+}
+
+.nbs-aiorm-panel-menu li {
+	position:relative;
+	padding-top: 5px;
+	padding-bottom:5px;
+	border-bottom:1px solid #444;
+}
+
+.nbs-aiorm-panel a {
+	color: #fff;
+	display:block;	
+	text-decoration:none;
+}
+
+.nbs-aiorm-panel-close {
+	position:absolute;
+	top:10px;
+	right:10px;
+	z-index: 3;
+}
+
+.nbs-aiorm-panel-close:before {
+	content: "X";
+}
+ 
+@media only screen and (max-width: 768px) {    
+	.nbs-aiorm-menu-notch, .nbs-aiorm-wrap, .nbs-aiorm-select-menu {
+		display:block;
+	}
+	#mainMenu1, #mainMenu2, #mainMenu3 { 
+		display: none;
+	} 	
+	
+}
+
+/**************************************************
+CLEARS
+***************************************************/
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearout {
+clear: both;
+display: block;
+overflow: hidden;
+width: 0;
+height: 20px;
+}
+
+.spacer {
+clear: both;
+display: block;
+overflow: hidden;
+width: 0;
+height: 10px;
+}
