@@ -16,7 +16,7 @@
         var defaults = $.extend({
             targetContainer: null,            
             type: 'select',
-            menuID: 'responsiveMenu',
+            menuID: 'responsiveMenu'
         }, options);
         
         /******************************
@@ -25,7 +25,7 @@
         
         var object = $(this);
         var settings = $.extend(defaults, options);           
-        
+        var panelOpen = false;
         
         /******************************
         Public Methods
@@ -57,12 +57,16 @@
                         methods.createList();
                         break;
                     
+                    case 'overlay':
+                        methods.createOverlay();
+                        break;                    
+                    
                     case 'panel':
                         methods.createPanel();
                         break;
                     
                     default:
-                      methods.createSelectBox();
+                        methods.createSelectBox();
                 }            
             
             },
@@ -73,7 +77,7 @@
             
             createList: function() {
                 
-                var outputMarkup = '<a href="#" id="'+ settings.menuID +'-notch" class="nbs-aiorm-menu-notch"></a>';
+                var outputMarkup = '<a href="#" id="'+ settings.menuID +'-trigger" class="nbs-aiorm-menu-trigger"></a>';
                 
                 outputMarkup += '<div class="nbs-aiorm-wrap"><ul id="'+ settings.menuID +'" class="nbs-aiorm-list-menu">';
                 
@@ -97,7 +101,7 @@
             createSelectBox: function() {
                 var outputMarkup = '';                
                 outputMarkup +=    '<select id="'+ settings.menuID +'" class="nbs-aiorm-select-menu">';
-                outputMarkup += '<option value="#">....</option>'
+                outputMarkup += '<option value="#">....</option>';
                 var menuItems = object.find("li a");
                 menuItems.each(function(){
                     outputMarkup += '<option value="' + $(this).attr("href") + '">'+$(this).text()+'</option>';
@@ -112,27 +116,53 @@
             },
             
             /******************************
-            Create Panel
+            Create Overlay
             *******************************/            
-            createPanel: function() {
+            createOverlay: function() {
             
-                var notchMarkup = '<a href="#" id="'+ settings.menuID +'-notch" class="nbs-aiorm-menu-notch"></a>'
-                var outputMarkup = '<div class="nbs-aiorm-wrap"><div class="nbs-aiorm-panel"><a href="#" class="nbs-aiorm-panel-close"></a>';
+                var triggerMarkup = '<a href="#" id="'+ settings.menuID +'-trigger" class="nbs-aiorm-menu-trigger"></a>';
+                var outputMarkup = '<div class="nbs-aiorm-overlay"><a href="#" class="nbs-aiorm-overlay-close"></a>';
                 
-                outputMarkup +=    '<ul id="'+ settings.menuID +'" class="nbs-aiorm-panel-menu">';
+                outputMarkup += '<ul id="'+ settings.menuID +'" class="nbs-aiorm-overlay-menu">';
 
                 var menuItems = object.find("li");
                 menuItems.each(function() {
                 
                     outputMarkup += '<li>'+$(this).html()+'</li>';
                 });
-                outputMarkup += '</ul></div></div>';
+                outputMarkup += '</ul></div>';
                 
                 if(settings.targetContainer) {
-                    $(notchMarkup).appendTo($(settings.targetContainer));
+                    $(triggerMarkup).appendTo($(settings.targetContainer));
                 }
                 else 
-                    $(notchMarkup).insertAfter($(object));
+                    $(triggerMarkup).insertAfter($(object));
+                    
+                $(outputMarkup).prependTo('body');            
+            },            
+            
+            /******************************
+            Create Panel
+            *******************************/            
+            createPanel: function() {
+            
+                var triggerMarkup = '<a href="#" id="'+ settings.menuID +'-trigger" class="nbs-aiorm-menu-trigger"></a>';
+                var outputMarkup = '<div class="nbs-aiorm-panel"></a>';
+                
+                outputMarkup += '<ul id="'+ settings.menuID +'" class="nbs-aiorm-panel-menu">';
+
+                var menuItems = object.find("li");
+                menuItems.each(function() {
+                
+                    outputMarkup += '<li>'+$(this).html()+'</li>';
+                });
+                outputMarkup += '</ul></div>';
+                
+                if(settings.targetContainer) {
+                    $(triggerMarkup).appendTo($(settings.targetContainer));
+                }
+                else 
+                    $(triggerMarkup).insertAfter($(object));
                     
                 $(outputMarkup).prependTo('body');            
             },
@@ -149,9 +179,13 @@
                         $('#'+settings.menuID).slideToggle();
                         break;
                     
-                    case 'panel':
-                        $('.nbs-aiorm-panel').css('display', 'block');
+                    case 'overlay':
+                        $('.nbs-aiorm-overlay').css('display', 'block');
                         break;
+                    
+                    case 'panel':
+                        methods.slidePanel();                    
+                        break;        
                     
                     default:
                       return;
@@ -160,23 +194,39 @@
             },
             
             /******************************
+            Slide Panel
+            *******************************/            
+            slidePanel: function(){
+                
+                if(panelOpen){
+                    $('.nbs-aiorm-panel').animate({ left: -320 });
+                    $('body').animate({ left: 0 });
+                    panelOpen = false;
+                } else {
+                    $('.nbs-aiorm-panel').animate({ left: 0 });
+                    $('body').animate({ left: 320 });         
+                    panelOpen = true;
+                }
+            },            
+            
+            /******************************
             Set Event Handlers
             *******************************/
             setEventHandlers: function() {
 
                 $('body').on('change', '#' + settings.menuID, function() {  
-                    if ($(this).val()!='') {
+                    if ($(this).val() !== '') {
                         window.location.href=$(this).val();
                     }
                 });
                 
-                $('#'+settings.menuID+'-notch').click(function(){
+                $('#'+settings.menuID+'-trigger').click(function(){
                     methods.handleClick();
                     return false;
                 });
                 
-                $('.nbs-aiorm-panel-close').click(function(){
-                    $('.nbs-aiorm-panel').css('display','none');
+                $('.nbs-aiorm-overlay-close').click(function(){
+                    $('.nbs-aiorm-overlay').css('display','none');
                     return false;
                 });                
                 
