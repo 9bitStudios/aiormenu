@@ -3,7 +3,7 @@
 * Version: 1.0.0
 * Description: AIOR (All in One Responsive) Menu - jQuery Plugin to create responsive menus from a given menu
 * Author: 9bit Studios
-* Copyright 2014, 9bit Studios
+* Copyright 2015, 2014, 9bit Studios
 * http://www.9bitstudios.com
 * Free to use and abuse under the MIT license.
 * http://www.opensource.org/licenses/mit-license.php
@@ -79,7 +79,7 @@
                 
                 var outputMarkup = '<a href="#" id="'+ settings.menuID +'-trigger" class="nbs-aiorm-menu-trigger"></a>';
                 
-                outputMarkup += '<div class="nbs-aiorm-wrap"><ul id="'+ settings.menuID +'" class="nbs-aiorm-list-menu">';
+                outputMarkup += '<div class="nbs-aiorm-list-menu-wrap"><ul id="'+ settings.menuID +'" class="nbs-aiorm-list-menu">';
                 
                 var menuItems = object.find("li");
                 menuItems.each(function() {

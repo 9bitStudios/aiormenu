@@ -21,10 +21,6 @@ body {
 /**************************************************
 AIORM - ALL IN ONE RESPONSIVE MENU
 ***************************************************/ 
-
-.nbs-aiorm-wrap {
-    position:relative;
-} 
  
 .nbs-aiorm-menu-trigger, .nbs-aiorm-list-menu, .nbs-aiorm-select-menu, .nbs-aiorm-overlay, .nbs-aiorm-panel { 
     display:none; 
@@ -43,7 +39,7 @@ AIORM TRIGGER
 .nbs-aiorm-menu-trigger {
     width:30px;
     height:30px;
-    background:url(../images/aiorm-notch-icon.png) center center #000;
+    background:url(../images/aiorm-icon.png) center center #000;
     border: 1px solid #333;
 }
 
@@ -63,6 +59,10 @@ AIORM SELECT MENU
 /**************************************************
 AIORM LIST MENU
 ***************************************************/
+
+.nbs-aiorm-list-menu-wrap {
+    position:relative;
+} 
 
 .nbs-aiorm-list-menu {
     display:none;
