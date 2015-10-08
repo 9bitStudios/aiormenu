@@ -26,7 +26,7 @@ AIORM - ALL IN ONE RESPONSIVE MENU
     display:none; 
 } 
 
-.nbs-aiorm-list-menu, .nbs-aiorm-panel-menu {
+.nbs-aiorm-list-menu, .nbs-aiorm-overlay-menu, .nbs-aiorm-panel-menu {
     list-style-type:none; 
     list-style-position:outside; 
     padding-left:0px;
@@ -39,6 +39,7 @@ AIORM TRIGGER
 .nbs-aiorm-menu-trigger {
     width:30px;
     height:30px;
+    margin-left: 5px;
     background:url(../images/aiorm-icon.png) center center #000;
     border: 1px solid #333;
 }
@@ -50,10 +51,8 @@ AIORM SELECT MENU
 .nbs-aiorm-select-menu {
     width:100%;
     padding:3px;
-    color:#fff;
-    background:#333;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    color:#333;
+    background:#fff;
 }
 
 /**************************************************
@@ -68,6 +67,7 @@ AIORM LIST MENU
     display:none;
     background-color:rgba(0,0,0,.9);
     width:100%;
+    margin-top: 10px;
 }
 
 .nbs-aiorm-list-menu:before {
@@ -83,6 +83,7 @@ AIORM LIST MENU
 
 .nbs-aiorm-list-menu li {
     position:relative;
+    margin-left: 5px;
     padding: 10px;
     border-bottom:1px solid #444;	
 }
@@ -111,21 +112,22 @@ AIORM OVERLAY MENU
     color: #fff;
 }
 
+.nbs-aiorm-overlay a {
+    color: #fff;
+    display:block;	
+    text-decoration:none;
+}
+
 .nbs-aiorm-overlay-menu {
     padding:10px;
 }
 
 .nbs-aiorm-overlay-menu li {
     position:relative;
+    margin-left: 5px;
     padding-top: 5px;
     padding-bottom:5px;
     border-bottom:1px solid #444;
-}
-
-.nbs-aiorm-overlay a {
-    color: #fff;
-    display:block;	
-    text-decoration:none;
 }
 
 .nbs-aiorm-overlay-close {
@@ -157,21 +159,22 @@ AIORM PANEL MENU
     color: #fff;
 }
 
+.nbs-aiorm-panel a {
+    color: #fff;
+    display:block;	
+    text-decoration:none;
+}
+
 .nbs-aiorm-panel-menu {
     padding:10px;
 }
 
 .nbs-aiorm-panel-menu li {
     position:relative;
+    margin-left: 5px;
     padding-top: 5px;
     padding-bottom:5px;
     border-bottom:1px solid #444;
-}
-
-.nbs-aiorm-panel a {
-    color: #fff;
-    display:block;	
-    text-decoration:none;
 }
  
 @media only screen and (max-width: 768px) {    

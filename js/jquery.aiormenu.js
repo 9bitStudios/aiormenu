@@ -180,7 +180,7 @@
                         break;
                     
                     case 'overlay':
-                        $('.nbs-aiorm-overlay').css('display', 'block');
+                        methods.toggleOverlay();
                         break;
                     
                     case 'panel':
@@ -191,6 +191,19 @@
                       return;
                 }                
                 
+            },
+            
+            /******************************
+            Show/Hide Overlay
+            *******************************/
+            toggleOverlay: function() {
+                if(panelOpen){
+                    $('.nbs-aiorm-overlay').css('display', 'none');
+                    panelOpen = false;
+                } else {
+                    $('.nbs-aiorm-overlay').css('display', 'block');
+                    panelOpen = true;
+                }                
             },
             
             /******************************
@@ -225,10 +238,32 @@
                     return false;
                 });
                 
-                $('.nbs-aiorm-overlay-close').click(function(){
-                    $('.nbs-aiorm-overlay').css('display','none');
-                    return false;
-                });                
+                
+                if(settings.type === 'overlay') {
+                    
+                    $('body').on('click', function(e){
+                        if(panelOpen) {
+                            if($(e.target).hasClass('nbs-aiorm-overlay-close')) {
+                                methods.toggleOverlay();
+                            }
+                            if(!$(e.target).hasClass('nbs-aiorm-overlay') && !$(e.target).closest('.nbs-aiorm-overlay').length > 0) {
+                                methods.toggleOverlay();
+                            }
+                        }
+                    });
+                    
+                }
+
+                if(settings.type === 'panel') {
+                    
+                    $('body').on('click', function(e){
+
+                        if(panelOpen && !$(e.target).hasClass('nbs-aiorm-panel') && !$(e.target).closest('.nbs-aiorm-panel').length > 0) {
+                            methods.slidePanel();
+                        }
+                    });
+                    
+                }                
                 
             }
         
