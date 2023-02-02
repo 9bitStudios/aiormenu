@@ -3,6 +3,8 @@ All-in-One Responsive Menu
 
 All-in-One Responsive Menu (aiormenu) is a jQuery plugin that will take a list menu and create a responsive menu out of that list for smaller viewing widths (e.g. mobile and tablets). There are a number of different types of responsive menus you can choose from.
 
+[View Demo](https://9bitstudios.github.io/aiormenu)
+
 ### Options
 
 Below is a listing of options your can set....
